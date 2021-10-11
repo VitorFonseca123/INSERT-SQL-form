@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="consulta.html">Consulta</a>
+              <a class="nav-link" href="consulta.php">Consulta</a>
             </li>
             
         </div>
@@ -40,14 +40,14 @@
   <div class="estilo">
     
       <h1>
-        <p id="tittle">Editar - Agendamento de potenciais clientes</p>
+        <p id="tittle">Cadastrar - Agendamento de potenciais clientes</p>
       </h1>
       <p>Sistema utilizado para agendamento de serviços</p>
 
-      <form method="post" action="main.php">
+      <form method="post" action="CadastroCont.php?funcao=cadastro" id="form" name="form">
         <div class="form-group">
           <label for="exampleInputEmail1">Nome</label>
-          <input type="text" class="form-control " id="" name="txtNome"  placeholder="Digite seu nome completo">
+          <input type="text" class="form-control " id="" name="cadNome"  placeholder="Digite seu nome completo">
           
         </div>
         <div class="form-group">

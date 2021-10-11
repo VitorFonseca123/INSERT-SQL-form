@@ -1,3 +1,6 @@
+<?php
+require_once("CadastroCont.php");
+?>
 <!DOCTYPE html>
 
 <html>
@@ -17,6 +20,14 @@
         <script src="js/Jquery.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
         <script src="js/consultar.js"></script>
+        <script>
+              function confirmDelete(delUrl) {
+                  if (confirm("Deseja apagar o registro?")) {
+                    document.location = delUrl;
+                   
+                  }  
+            }
+	        </script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -28,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.html">Cadastro</a>
+                  <a class="nav-link" href="index.php">Cadastro</a>
                 </li>
                 
             </div>
@@ -49,12 +60,32 @@
                           <th scope="col">Ação</th>
                         </tr>
                       </thead>
-                      <thead id="TableData">
+                      <!--<thead id="TableData">
 
-                      </thead>
+                      </thead>-->
+                      <?php 
+                        $cont = new CadastroCont();
+                        $resultado = $cont->listar(0);
+                        for($i=0;$i<=count($resultado)-1;$i++){
+                         
+                          ?>
+                          <tr>
+                            <td scope="row"><?php print($resultado[$i]['nome']);?></td>
+                            <td><?php echo $resultado[$i]['telefone']; ?></td>
+                            <td><?php echo $resultado[$i]['origem']; ?></td>
+                            <td><?php echo $resultado[$i]['data_contato']; ?></td>
+                            <td><?php echo $resultado[$i]['observacao']; ?></td>
+                            <td>
+                              <button type="button" class="btn btn-outline-primary" onclick="location.href='editarClientes.php?id=<?php echo $resultado[$i]['id']; ?>'" style="width: 72px;">Editar</button>
+                              <button type="button" class="btn btn-outline-primary" onclick="javascript:confirmDelete('excluir.php?id=<?php echo $resultado[$i]['id']; ?>')" style="width: 72px;">Excluir</button>
+                            </td>
+                          </tr>
+                          <?php } ?>
+                        
+                      
 
                   </table>
-                  <button type="button" id="btnListar" class="btn btn-primary">Buscar Agendamentos</button>
+                 
                 </div>
               </div>
            </div> 
